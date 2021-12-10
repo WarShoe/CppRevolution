@@ -1,4 +1,4 @@
-incdir = ['..','../include']
+incdir = include_directories(['..','../include'])
 math = executable(
     'math',
     'math.cpp',
