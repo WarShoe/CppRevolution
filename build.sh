@@ -7,10 +7,23 @@ function install_packages() {
 
     #https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
 
-    dpkg --purge packages-microsoft-prod && dpkg -i packages-microsoft-prod.deb
+
+    apt install -y gpg
+    wget -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.asc.gpg
+    mv microsoft.asc.gpg /etc/apt/trusted.gpg.d/
+    wget https://packages.microsoft.com/config/ubuntu/20.10/prod.list
+    mv prod.list /etc/apt/sources.list.d/microsoft-prod.list
+    chown root:root /etc/apt/trusted.gpg.d/microsoft.asc.gpg
+    chown root:root /etc/apt/sources.list.d/microsoft-prod.list
     apt update
-    apt install -y apt-transport-https 
+    apt install -y apt-transport-https
+    apt update
     apt install -y dotnet-sdk-6.0
+
+#    dpkg --purge packages-microsoft-prod && dpkg -i packages-microsoft-prod.deb
+#    apt update
+#    apt install -y apt-transport-https 
+#    apt install -y dotnet-sdk-6.0
 }
 
 function cleanup_all() {
@@ -44,6 +57,8 @@ function publish_cpp_to_csharp() {
 
 echo 'DOTNET!!!!!!!!!!!!!'
 dotnet --version
+echo 'Ubuntu'
+lsb_release –a
 
 install_packages
 cleanup_all
