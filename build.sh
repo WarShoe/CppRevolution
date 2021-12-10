@@ -32,6 +32,9 @@ function publish_cpp_to_csharp() {
     cp -a $BUILD_DIR/csharp/* $CSHARP_DIR/bin/Debug/net5.0
 }
 
+echo 'DOTNET!!!!!!!!!!!!!'
+dotnet --version
+
 install_packages
 cleanup_all
 build_cpp
