@@ -6,7 +6,10 @@ function install_packages() {
     apt install -y meson libfmt-dev python python-pybind11 
 
     #https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
-    #apt install -y apt-transport-https 
+
+    dpkg --purge packages-microsoft-prod && dpkg -i packages-microsoft-prod.deb
+    apt update
+    apt install -y apt-transport-https 
     apt install -y dotnet-sdk-6.0
 }
 
