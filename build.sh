@@ -4,6 +4,10 @@ export CSHARP_DIR=$TOP_DIR/csharp/tests
 
 function install_packages() {
     apt install -y meson libfmt-dev python python-pybind11 
+
+    #https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
+    #apt install -y apt-transport-https 
+    apt install -y dotnet-sdk-6.0
 }
 
 function cleanup_all() {
@@ -31,6 +35,9 @@ function publish_cpp_to_csharp() {
     mkdir -p $CSHARP_DIR/bin/Debug/net5.0
     cp -a $BUILD_DIR/csharp/* $CSHARP_DIR/bin/Debug/net5.0
 }
+
+
+
 
 echo 'DOTNET!!!!!!!!!!!!!'
 dotnet --version
