@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>net2.1</TargetFramework>
+    <TargetFramework>net3.1</TargetFramework>
 
     <IsPackable>false</IsPackable>
   </PropertyGroup>
