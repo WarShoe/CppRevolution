@@ -5,7 +5,7 @@ project (
 )
 
 subdir('cpp')
-subdir('python')
+#subdir('python')
 subdir('csharp')
 
 subdir('ideas')
