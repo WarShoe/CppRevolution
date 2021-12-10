@@ -3,7 +3,7 @@ export BUILD_DIR=$TOP_DIR/build
 export CSHARP_DIR=$TOP_DIR/csharp/tests
 
 function install_packages() {
-    apt install -y meson libfmt-dev python3.8 python-pybind11 
+    apt install -y meson libfmt-dev python python-pybind11 
 }
 
 function cleanup_all() {
