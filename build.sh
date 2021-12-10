@@ -2,18 +2,8 @@ export TOP_DIR=$PWD
 export BUILD_DIR=$TOP_DIR/build
 export CSHARP_DIR=$TOP_DIR/csharp/tests
 
-if command -v apt &> /dev/null
-then
-    export INSTALL_COMMAND="apt install -y"
-elif command -v brew &> /dev/null
-then
-    export INSTALL_COMMAND="brew"
-fi
-
-apt install -y
-
-function install {
-    $INSTALL_COMMAND $PACKAGES
+function install_packages {
+    apt install -y meson
 }
 
 function cleanup_all {
@@ -42,6 +32,7 @@ function publish_cpp_to_csharp {
     cp -a $BUILD_DIR/csharp/* $CSHARP_DIR/bin/Debug/net5.0
 }
 
+install_packages
 cleanup_all
 build_cpp
 publish_cpp_to_csharp
