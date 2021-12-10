@@ -1,7 +1,7 @@
 option = executable(
     'option',
     'option-test.cpp',
-    include_directories : ['../cpp'],
+    include_directories : ['../cpp','../cpp/include'],
     dependencies : [],
     #link_with : [numerics_cpp]
 )
