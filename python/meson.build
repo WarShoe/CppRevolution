@@ -1,5 +1,5 @@
-python3    = dependency('python3')
-py3        = import('python3')
+python3    = dependency('python3-devel')
+py3        = import('python3-devel')
 
 py3.extension_module (
     'numerics_py', [
