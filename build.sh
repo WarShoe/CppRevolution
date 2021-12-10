@@ -3,7 +3,7 @@ export BUILD_DIR=$TOP_DIR/build
 export CSHARP_DIR=$TOP_DIR/csharp/tests
 
 function install_packages() {
-    apt install -y meson fmt
+    apt install -y meson libfmt-dev
 }
 
 function cleanup_all() {
