@@ -3,7 +3,7 @@ numerics_cpp = shared_library (
 	sources: [
 	    'binding.cpp',
     ],
-    include_directories : ['../cpp'],
+    include_directories : include_directories('../cpp'),
     link_with           : [numerics_cpp],
     dependencies : [],
 #    install : true,
