@@ -59,7 +59,7 @@ function build_csharp() {
 
 function test_csharp() {
     cd $CSHARP_DIR
-    dotnet test
+    dotnet test -l "console;verbosity=detailed"
 }
 
 function publish_cpp_to_csharp() {
