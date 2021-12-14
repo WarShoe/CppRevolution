@@ -2,6 +2,20 @@ export TOP_DIR=$PWD
 export BUILD_DIR=$TOP_DIR/build
 export CSHARP_DIR=$TOP_DIR/csharp/tests
 
+function show_info() {
+    echo 'DOTNET!!!!!!!!!!!!!'
+    dotnet --version
+    echo 'Ubuntu'
+    lsb_release –a
+    
+    echo '--- CUT HERE begin ---'
+    mkdir proj
+    cd proj
+    dotnet new nunit
+    cat proj.csproj
+    echo '--- CUT HERE end ---'
+}
+
 function install_packages() {
     apt install -y meson libfmt-dev python python-pybind11 
 
@@ -54,11 +68,7 @@ function publish_cpp_to_csharp() {
 
 
 
-
-echo 'DOTNET!!!!!!!!!!!!!'
-dotnet --version
-echo 'Ubuntu'
-lsb_release –a
+show_info
 
 install_packages
 cleanup_all
