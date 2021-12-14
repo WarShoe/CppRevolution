@@ -16,11 +16,8 @@ function show_info() {
     echo '--- CUT HERE end ---'
 }
 
-function install_packages() {
-    apt install -y meson libfmt-dev python python-pybind11 
-
+function install_dotnet() {
     #https://docs.microsoft.com/en-us/dotnet/core/install/linux-ubuntu
-
 
     apt install -y gpg
     wget -O - https://packages.microsoft.com/keys/microsoft.asc | gpg --dearmor -o microsoft.asc.gpg
@@ -38,6 +35,10 @@ function install_packages() {
 #    apt update
 #    apt install -y apt-transport-https 
 #    apt install -y dotnet-sdk-6.0
+}
+
+function install_packages() {
+    apt install -y meson libfmt-dev python python-pybind11 
 }
 
 function cleanup_all() {
@@ -62,14 +63,15 @@ function test_csharp() {
 }
 
 function publish_cpp_to_csharp() {
-    mkdir -p $CSHARP_DIR/bin/Debug/net5.0
-    cp -a $BUILD_DIR/csharp/* $CSHARP_DIR/bin/Debug/net5.0
+    # FIXME: get dotnet build directory automatically
+    #export p=$CSHARP_DIR/bin/Debug/net5.0
+    export p=$CSHARP_DIR/bin/Debug/netcoreapp3.1
+    mkdir -p $p
+    cp -a $BUILD_DIR/csharp/* $p
 }
 
 
-
-show_info
-
+#show_info
 install_packages
 cleanup_all
 build_cpp
